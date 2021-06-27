@@ -30,6 +30,9 @@ const char 			*ft_check_flags(const char *str, t_flag *flag, va_list VaList);
 const char 			*ft_flag_is_num(const char *str, t_flag *flag);
 const char			*ft_load_prec_num(const char *str, t_flag *flag);
 const char 			*ft_load_width_num(const char *str, t_flag *flag);
-int					ft_check_dot(const char *str);
+int					ft_print_zero(t_flag *flag, int n_bytes, int len);
+int					ft_print_width_is_zero(t_flag *flag, int n_bytes, int len);
+int					ft_print_spaces(t_flag *flag, int n_bytes, int len);
+int					ft_print_minus(t_flag *flag, int n_bytes, int len);
 
 #endif

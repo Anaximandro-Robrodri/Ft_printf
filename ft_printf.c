@@ -58,60 +58,102 @@ int	ft_printf(const char *str, ...)
 
 int main()
 {
-    int i = ft_printf(" %011d ", 0);
+	int i;
+	int d;
+/*	i = ft_printf(" %5d ", 22220);
+	printf("\n%i\n", i);
+	d = printf(" %5d ", 22220);				// CASO 1: WIDTH = LEN
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %100d ", 22220);
     printf("\n%i\n", i);
-    int d = printf(" %011d ", 0);
-    printf("\n%d", d);
+    d = printf(" %100d ", 22220);			// CASO 2: WIDTH > LEN
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %4d ", 11110);
+    printf("\n%i\n", i);				// CASO 3: WIDTH < LEN
+    d = printf(" %4d ", 11110);
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %.3d ", 220);
+	printf("\n%i\n", i);
+	d = printf(" %.3d ", 220);			//	CASO 1: PREC = LEN
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %.100d ", 10000);
+    printf("\n%i\n", i);
+    d = printf(" %.100d ", 10000);			// CASO 2: PREC > LEN
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %.4d ", 11110);
+    printf("\n%i\n", i);				// CASO 3: PREC < LEN
+    d = printf(" %.4d ", 11110);
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %8.8d ", 22220000);
+	printf("\n%i\n", i);
+	d = printf(" %8.8d ", 22220000);				// CASO 1: WIDTH = LEN && WIDTH = PREC
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %100.100d ", 22);
+    printf("\n%i\n", i);
+    d = printf(" %100.100d ", 22);			// CASO 2: WIDTH > LEN && WIDTH = PREC
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %6.6d ", 1111000);
+    printf("\n%i\n", i);				// CASO 3: WIDTH < LEN && WIDTH = PREC
+    d = printf(" %6.6d ", 1111000);
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %8.7d ", 22220000);
+	printf("\n%i\n", i);
+	d = printf(" %8.7d ", 22220000);				// CASO 4: WIDTH = LEN && WIDTH > PREC
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %100.10d ", 22);
+    printf("\n%i\n", i);
+    d = printf(" %100.10d ", 22);			// CASO 5: WIDTH > LEN && WIDTH > PREC
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %6.3d ", 12345678);
+    printf("\n%i\n", i);				// CASO 6: WIDTH < LEN && WIDTH > PREC
+    d = printf(" %6.3d ", 12345678);
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %8.20d ", 12345678);
+	printf("\n%i\n", i);
+	d = printf(" %8.20d ", 12345678);				// CASO 7: WIDTH = LEN && WIDTH < PREC
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %6.20d ", 12345678);
+    printf("\n%i\n", i);				// CASO 8: WIDTH < LEN && WIDTH < PREC
+    d = printf(" %6.20d ", 12345678);
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %10.6d ", 12345678);
+    printf("\n%i\n", i);				// CASO 9: WIDTH > LEN && WIDTH < PREC
+    d = printf(" %10.6d ", 12345678);
+    printf("\n%d\n", d);*/
+/*	i = ft_printf(" %8.8d ", 22222);
+	printf("\n%i\n", i);
+	d = printf(" %8.8d ", 22222);				// CASO 10: PREC > LEN && PREC = WIDTH
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %2.2d ", 22222);
+	printf("\n%i\n", i);
+	d = printf(" %2.2d ", 22222);				// CASO 11: PREC < LEN && PREC = WIDTH
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %9.10d ", 1234567890);
+	printf("\n%i\n", i);
+	d = printf(" %9.10d ", 1234567890);				// CASO 12: PREC = LEN && PREC > WIDTH
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %7.8d ", 1234567890);
+	printf("\n%i\n", i);
+	d = printf(" %7.8d ", 1234567890);				// CASO 13: PREC < LEN && PREC > WIDTH
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %9.30d ", 1234567890);
+	printf("\n%i\n", i);
+	d = printf(" %9.30d ", 1234567890);				// CASO 14: PREC > LEN && PREC > WIDTH
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %*.*d ", 20, 10, 1234567890);
+	printf("\n%i\n", i);
+	d = printf(" %*.*d ",20, 10, 1234567890);				// CASO 15: PREC = LEN && PREC < WIDTH
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %20.15d ", 1234567890);
+	printf("\n%i\n", i);
+	d = printf(" %20.15d ", 1234567890);				// CASO 16: PREC > LEN && PREC < WIDTH
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %20.5d ", 1234567890);
+	printf("\n%i\n", i);
+	d = printf(" %20.5d ", 1234567890);				// CASO 17: PREC < LEN && PREC < WIDTH
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %20.30d ", 1234567890);
+	printf("\n%i\n", i);
+	d = printf(" %20.30d ", 1234567890);				// CASO 18: PREC > LEN && PREC > WIDTH && WIDTH > LEN
+	printf("\n%d\n", d);*/
 }
-
-/*int main()
-{
-//	int i;
-//	unsigned int hexa = -245612;
-//	int hex = -245612;
-//	char a[] = "Do";
-//	char car = 'z';
-	int d = 2147483647;
-
-	printf("\nPARA INTS\n");
-	printf("FLAG = *\n");
-	ft_printf("\n%13d", d);
-	ft_printf("\n%.13d", d);
-	ft_printf("\n%40.30d", d);
-	ft_printf("\n%*.*d",25, 20, d);
-	ft_printf("\n%*d",13, d);
-	printf("\n--------------------------");
-	printf("\n%13d", d);
-	printf("\n%.13d", d);
-	printf("\n%40.30d", d);
-	printf("\n%*.*d",25, 20, d);
-	printf("\n%*d",13, d);
-	printf("\nFLAG = 0\n");
-	ft_printf("\n%0.13d", d);
-	ft_printf("\n%013d", d);
-	ft_printf("\n%040.30d \n%013d \n%040.30d", d, d, d);
-	ft_printf("\n%40.30d", d);
-	ft_printf("\n%0*.*d",25, 20, d);
-	ft_printf("\n%05.*d",13, d);
-	ft_printf("\n%0*.15d",20, d);
-	printf("\n--------------------------");
-	printf("\n%013d", d);
-	printf("\n%0.13d", d);
-	printf("\n%040.30d \n%013d \n%040.30d", d, d, d);
-	printf("\n%40.30d", d);
-	printf("\n%0*.*d",25, 20, d);
-	printf("\n%05.*d",13, d);
-	printf("\n%0*.15d",20, d);
-	printf("\nFLAG = -\n");
-	ft_printf("\n%-013d", d);
-	ft_printf("\n%-40.30d", d);
-	ft_printf("\n%-*.*d",30, 20, d);
-	printf("\n--------------------------");
-	printf("\n%-13d", d);
-	printf("\n%-40.30d", d);
-	printf("\n%-*.*d",30, 20, d);
-//	printf("\nPARA CHARS\n");
-//	printf("\n%05.*d %05.*d",6, 6, d, d);
-//	ft_printf("\n///////////////////////////////////////");
-//	ft_printf("\n%05.*d %05.*d",6, 6, d, d);
-}*/

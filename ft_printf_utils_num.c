@@ -18,15 +18,6 @@ int	ft_int_len(int n)
 	return (i);
 }
 
-int	ft_check_dot(const char *str)
-{
-	while (ft_isdigit(*str))
-		str++;
-	if (*str == '.')
-		return (1);
-	return (0);
-}
-
 const char	*ft_load_prec_num(const char *str, t_flag *flag)
 {
 	flag->flag_prec = ft_atoi(str);
