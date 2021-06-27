@@ -23,16 +23,16 @@ static int	ft_treat_positive(long print_int, t_flag *flag, int len, int n_bytes)
 {
 	if (flag->flag_is_width == 1 && flag->flag_minus == 0)
 	{
-		if (flag->flag_zero == 0)
-			n_bytes = ft_print_spaces(flag, n_bytes, len);
-		else
+		if (flag->flag_zero == 1 && flag->flag_is_prec == 0)
 			n_bytes = ft_print_width_is_zero(flag, n_bytes, len);
+		else
+			n_bytes = ft_print_spaces(flag, n_bytes, len);
 	}
 	if (flag->flag_is_prec == 1)
 		n_bytes = ft_print_zero(flag, n_bytes, len);
 	ft_putnbr(print_int);
-//	if (flag->flag_minus == 1)
-//		n_bytes = ft_print_minus(flag, n_bytes, len);
+	if (flag->flag_minus == 1)
+		n_bytes = ft_print_minus(flag, n_bytes, len);
 	return (n_bytes + len);
 }
 
