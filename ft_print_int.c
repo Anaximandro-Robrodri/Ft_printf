@@ -23,7 +23,32 @@ static int	ft_print_zero(t_flag *flag, int n_bytes, int len, int print_int)
 	return (n_bytes);
 }
 
-static	int	ft_print_spaces(t_flag *flag, int n_bytes, int len, int print_int)
+static int	ft_print_width_is_zero(t_flag *flag, int n_bytes, int len, int print_int)
+{
+	int i;
+
+	i = 0;
+	if (flag->flag_width >= len)
+	{
+		if (flag->flag_is_prec == 0 || (flag->flag_width > flag->flag_prec && print_int < 0))
+			flag->flag_width -= len;
+		if (flag->flag_width > flag->flag_prec)
+			flag->flag_width -= flag->flag_prec;
+		else if (flag->flag_width <= flag->flag_prec)
+			flag->flag_width = 0;
+	}
+	else
+		flag->flag_width -= len;
+	while (i < flag->flag_width)
+	{
+		ft_putnbr(0);
+		n_bytes++;
+		i++;
+	}
+	return (n_bytes);
+}
+
+static int	ft_print_spaces(t_flag *flag, int n_bytes, int len, int print_int)
 {
 	int i;
 
@@ -79,7 +104,12 @@ static int	ft_print_minus(t_flag *flag, int n_bytes, int len)
 static int ft_treat_negative(int print_int, t_flag *flag, int len, int n_bytes)
 {
 	if (flag->flag_is_width == 1 && flag->flag_minus == 0)
-		n_bytes = ft_print_spaces(flag, n_bytes, len, print_int);
+	{
+		if (flag->flag_zero == 0)
+			n_bytes = ft_print_spaces(flag, n_bytes, len, print_int);
+		else
+			n_bytes = ft_print_width_is_zero(flag, n_bytes, len, print_int);
+	}
 	ft_putchar('-');
 	print_int *= -1;
 	if (flag->flag_is_prec == 1)
@@ -93,7 +123,12 @@ static int ft_treat_negative(int print_int, t_flag *flag, int len, int n_bytes)
 static int	ft_treat_positive(int print_int, t_flag *flag, int len, int n_bytes)
 {
 	if (flag->flag_is_width == 1 && flag->flag_minus == 0)
-		n_bytes = ft_print_spaces(flag, n_bytes, len, print_int);
+	{
+		if (flag->flag_zero == 0)
+			n_bytes = ft_print_spaces(flag, n_bytes, len, print_int);
+		else
+			n_bytes = ft_print_width_is_zero(flag, n_bytes, len, print_int);
+	}
 	if (flag->flag_is_prec == 1)
 		n_bytes = ft_print_zero(flag, n_bytes, len, print_int);
 	ft_putnbr(print_int);
@@ -104,8 +139,8 @@ static int	ft_treat_positive(int print_int, t_flag *flag, int len, int n_bytes)
 
 int	ft_print_int(va_list VaList, int n_bytes, t_flag *flag)
 {
-	int				print_int;
-	int				len;
+	long				print_int;
+	int					len;
 
 	print_int = va_arg(VaList, int);
 	if ((print_int == 0 && flag->flag_dot == 1 && flag->flag_is_prec == 0))

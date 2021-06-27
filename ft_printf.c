@@ -23,10 +23,8 @@ static int	ft_check_args(const char **str, va_list VaList, int n_bytes, t_flag *
 
 static const char	*ft_is_flag(const char *str, t_flag *flag, va_list VaList)
 {
-	while (*str == '-' || *str == '*' || (*str == '.' && (*(str + 1) == '*')) || *str == '0')
+	while (!ft_isalpha(*str))
 		str = ft_check_flags(str, flag, VaList);
-	while (*str == '.' || ft_isdigit(*str))
-		str = ft_flag_is_num(str, flag);
 	return (str);
 }
 
@@ -60,9 +58,9 @@ int	ft_printf(const char *str, ...)
 
 int main()
 {
-    int i = ft_printf(" %-30.20d ", -10);
+    int i = ft_printf(" %011d ", 0);
     printf("\n%i\n", i);
-    int d = printf(" %-30.20d ", -10);
+    int d = printf(" %011d ", 0);
     printf("\n%d", d);
 }
 

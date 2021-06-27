@@ -18,7 +18,7 @@ static const char *ft_load_prec(const char *str, t_flag *flag, va_list VaList)
 	return (str + 1);
 }
 
-static const char *ft_load_width_astherisk(const char *str, t_flag *flag, va_list VaList)
+static void ft_load_width_astherisk(t_flag *flag, va_list VaList)
 {
 
 	flag->flag_width = va_arg(VaList, int);
@@ -31,7 +31,6 @@ static const char *ft_load_width_astherisk(const char *str, t_flag *flag, va_lis
 		flag->flag_minus = 1;
 		flag->flag_width *= -1;
 	}
-	return (str);
 }
 
 const char *ft_check_flags(const char *str, t_flag *flag, va_list VaList)
@@ -42,23 +41,21 @@ const char *ft_check_flags(const char *str, t_flag *flag, va_list VaList)
 		flag->flag_minus = 1;
 	}
 	if (*str == '0' && flag->flag_minus == 0)
-	{
 		flag->flag_zero = 1;
-		if (ft_check_dot(str))
-			str = (ft_load_width_num(++str, flag) - 1);
-	}
 	else if (*str == '.' && *(str + 1) == '*')
 		str = ft_load_prec(str, flag, VaList);
 	else if (*str == '*')
-		str = ft_load_width_astherisk(str, flag, VaList);
+		ft_load_width_astherisk(flag, VaList);
+	else if (*str == '.' || ft_isdigit(*str))
+		str = ft_flag_is_num(str, flag);
 	return (str + 1);
 }
 
 const char *ft_flag_is_num(const char *str, t_flag *flag)
 {
-	if (*str == '.' || (flag->flag_zero == 1 && !ft_check_dot(str)))
+	if (*str == '.')
 		str = ft_load_prec_num(++str, flag);
 	else
 		str = ft_load_width_num(str, flag);
-	return (str);
+	return (str - 1);
 }
