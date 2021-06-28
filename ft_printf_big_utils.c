@@ -66,16 +66,11 @@ void	ft_putchar(char c)
 	write (1, &c, sizeof(char));
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(long n)
 {
 	char			z;
 	unsigned int	nb;
 
-	if (n == -2147483648)
-	{
-		write (1, "-2147483648", 11);
-		return ;
-	}
 	if (n < 0)
 	{
 		write (1, "-", sizeof(char));

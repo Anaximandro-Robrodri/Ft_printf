@@ -56,14 +56,26 @@ int	ft_printf(const char *str, ...)
 	return(n_bytes);
 }
 
-int main()
+/*int main()
 {
 	int i;
-	int d;
-	i = ft_printf(" %0*.10d ", 21, INT_MIN);
+	int d;*/
+/*	i = ft_printf(" %-21.3d ", -128);
 	printf("\n%i\n", i);
-	d = printf(" %0*.10d ", 21, INT_MIN);
-	printf("\n%d\n", d);
+	d = printf(" %-21.3d ", -128);
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %-21.2d ", -128);
+	printf("\n%i\n", i);					// SEGUNDO CASO INCOMPATIBLE
+	d = printf(" %-21.2d ", -128);
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %-21.1d ", -12800);
+	printf("\n%i\n", i);
+	d = printf(" %-21.1d ", -12800);
+	printf("\n%d\n", d);*/
+/*	i = ft_printf(" %*.10d ", 21, -128);
+	printf("\n%i\n", i);
+	d = printf(" %*.10d ", 21, -128);
+	printf("\n%d\n", d);*/
 /*	i = ft_printf(" %-5d ", 0);
 	printf("\n%i\n", i);
 	d = printf(" %-5d ", 0);				// CASO 1: WIDTH = LEN
@@ -256,4 +268,4 @@ int main()
 	printf("\n%i\n", i);
 	d = printf(" %20.30d ", 1234567890);				// CASO 18: PREC > LEN && PREC > WIDTH && WIDTH > LEN
 	printf("\n%d\n", d);*/
-}
+//}

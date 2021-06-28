@@ -9,6 +9,7 @@ void	ft_init_flags(t_flag *flag)
 	flag->flag_zero = 0;
 	flag->flag_is_width = 0;
 	flag->flag_is_prec = 0;
+	flag->flag_is_negative = 0;
 }
 static const char *ft_load_prec(const char *str, t_flag *flag, va_list VaList)
 {

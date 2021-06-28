@@ -57,7 +57,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void    ft_putchar(char c);
 void    ft_putendl(char *s);
-void    ft_putnbr(int n);
+void    ft_putnbr(long n);
 void    ft_putstr(char *s);
 int     ft_printf(const char *str, ...);
 void    ft_putnbr_base(int nbr, char *base);

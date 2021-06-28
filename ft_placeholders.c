@@ -58,7 +58,7 @@ int	ft_print_width_is_zero(t_flag *flag, int n_bytes, int len)
 	return (n_bytes);
 }
 
-int	ft_print_spaces(t_flag *flag, int n_bytes, int len, int print_int)
+int	ft_print_spaces(t_flag *flag, int n_bytes, int len, long print_int)
 {
 	int	width;
 	int	i;
@@ -67,10 +67,15 @@ int	ft_print_spaces(t_flag *flag, int n_bytes, int len, int print_int)
 	width = flag->flag_width;
 	if (flag->flag_is_prec == 1)
 	{
-		if ((width >= len && width >= flag->flag_prec) || width < len)
+		if ((width >= len && width >= flag->flag_prec) || width < len )
 		{
 			if ((width == len && width > flag->flag_prec) || print_int < 0)
-				width = (width - flag->flag_prec) - 1;
+			{
+				if (print_int < 0 && flag->flag_prec < len)
+					width -= len;
+				else
+					width = (width - flag->flag_prec) - 1;
+			}
 			else if ((width < len && width > flag->flag_prec) ||
 				(width > len && width > flag->flag_prec && flag->flag_prec < len))
 				width -= len;
@@ -108,8 +113,13 @@ int	ft_print_minus(t_flag *flag, int n_bytes, int len)
 	{
 		if ((width >= len && width >= flag->flag_prec) || width < len)
 		{
-			if (width == len && width > flag->flag_prec)
-				width = (width - flag->flag_prec) - 1;
+			if ((width == len && width > flag->flag_prec) || (width > flag->flag_prec && flag->flag_is_negative))
+			{
+				if (flag->flag_is_negative == 1 && flag->flag_prec < len)
+					width -= len;
+				else
+					width = (width - flag->flag_prec) - 1;
+			}
 			else if ((width < len && width > flag->flag_prec) ||
 				(width > len && width > flag->flag_prec && flag->flag_prec < len))
 				width -= len;

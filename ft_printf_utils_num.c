@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	ft_int_len(int n)
+int	ft_int_len(long n)
 {
 	int	i;
 
@@ -23,7 +23,10 @@ const char	*ft_load_prec_num(const char *str, t_flag *flag)
 	flag->flag_prec = ft_atoi(str);
 	if (flag->flag_prec > 0)
 		flag->flag_is_prec = 1;
-	flag->flag_dot = 1;
+	if (flag->flag_prec == 0)
+	{
+		flag->flag_dot = 1;
+	}
 	while (ft_isdigit(*str))
 		str++;
 	return (str);
