@@ -19,7 +19,7 @@ typedef struct	s_flag
 
 int					ft_printf(const char *str, ...);
 int                 ft_print_string(va_list VaList, int n_bytes);
-int                 ft_print_char (va_list VaList, int n_bytes);
+int                 ft_print_char (va_list arg, int n_bytes, t_flag *flag);
 int                 ft_print_int(va_list VaList, int n_bytes, t_flag *flag);
 int                 ft_print_hex(va_list VaList, int n_bytes);
 int                 ft_print_address(va_list VaList, int n_bytes);

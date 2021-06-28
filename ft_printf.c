@@ -5,10 +5,10 @@
 static int	ft_check_args(const char **str, va_list VaList, int n_bytes, t_flag *flag)
 {
 /*	if (**str == 's')
-		return (ft_print_string(VaList, n_bytes));
-	else if (**str == 'c')
-		return (ft_print_char(VaList, n_bytes));*/
-	if (**str == 'i' || **str == 'd')
+		return (ft_print_string(VaList, n_bytes));*/
+	if (**str == 'c')
+		return (ft_print_char(VaList, n_bytes, flag));
+	else if (**str == 'i' || **str == 'd')
 		return (ft_print_int(VaList, n_bytes, flag));
 /*	else if (**str == 'x')
 		return (ft_print_hex(VaList, n_bytes));
@@ -56,7 +56,18 @@ int	ft_printf(const char *str, ...)
 	return(n_bytes);
 }
 
-/*int main()
+/*int main()			// PARA LOS CHARS
+{
+	int i;
+	int d;
+	char a = 'a';
+	i = ft_printf(" %-*c ", 20, a);
+	printf("\n%i\n", i);
+	d = printf(" %-*c ", 20, a);
+	printf("\n%i\n", d);
+}*/
+
+/*int main()    // PARA LOS INTS
 {
 	int i;
 	int d;*/
