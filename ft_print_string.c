@@ -1,5 +1,21 @@
 #include "ft_printf.h"
 
+static int	ft_width_analyze(t_flag *flag, int width, int len)
+{
+	if (flag->flag_dot == 1)
+			width = flag->flag_width;
+		else if (((width > flag->flag_prec && width < len) || flag->flag_prec < len))
+		{
+			if (width < len || flag->flag_prec < len)
+				width -= flag->flag_prec;
+			else
+				width -= len;
+		}
+		else
+			width -= len;
+	return (width);
+}
+
 static int	ft_print_string_spaces(t_flag *flag, int n_bytes, int len)
 {
 	int	width;
@@ -8,19 +24,7 @@ static int	ft_print_string_spaces(t_flag *flag, int n_bytes, int len)
 	i = 0;
 	width = flag->flag_width;
 	if (flag->flag_is_prec == 1 || flag->flag_dot == 1)
-		{
-			if (flag->flag_dot == 1)
-				width = flag->flag_width;
-			else if (((width > flag->flag_prec && width < len) || flag->flag_prec < len))
-			{
-				if (width < len || flag->flag_prec < len)
-					width -= flag->flag_prec;
-				else
-					width -= len;
-			}
-			else
-				width -= len;
-		}
+		width = ft_width_analyze(flag, width, len);
 	else if (width >= len)
 		width -= len;
 	else if (width < len)

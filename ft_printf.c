@@ -13,10 +13,10 @@ static int	ft_check_args(const char **str, va_list VaList, int n_bytes, t_flag *
 	else if (**str == 'u')
 		return (ft_print_unsigned_int(VaList, n_bytes, flag));
 /*	else if (**str == 'x')
-		return (ft_print_hex(VaList, n_bytes));
+		return (ft_print_hex(VaList, n_bytes));*/
 	else if (**str == 'p')
-		return (ft_print_address(VaList, n_bytes));
-	else if (**str == 'X')
+		return (ft_print_address(VaList, n_bytes, flag));
+/*	else if (**str == 'X')
 		return (ft_print_unsigned_hexa(VaList, n_bytes));*/
 	else if (**str == '%')
 		return (ft_print_percent(n_bytes));
@@ -57,7 +57,18 @@ int	ft_printf(const char *str, ...)
 	va_end(VaList);
 	return(n_bytes);
 }
+
 /*int main()
+{
+	int i;
+	int d;
+	i = ft_printf(" %10p %10p", "perro", "perro");
+	printf("\n%i\n", i);
+	d = printf(" %10p %10p", "perro", "perro");
+	printf("\n%i", d);
+}*/
+
+/*int main()				// PARA UNSIGNED
 {
 	int i;
 	int d;

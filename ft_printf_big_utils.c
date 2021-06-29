@@ -153,11 +153,13 @@ void	ft_putnbr_base(int nbr, char *base)
 	}
 }
 
-void	ft_putnbr_base_long(unsigned long long nbr, char *base)
+int	ft_putnbr_base_long(unsigned long long nbr, char *base)
 {
 	int	a;
 	int	b;
+	static int n;
 
+	n = 0;
 	if (gest_errors(base) == 0)
 	{
 		a = ft_strlen(base);
@@ -166,13 +168,16 @@ void	ft_putnbr_base_long(unsigned long long nbr, char *base)
 			ft_putnbr_base_long(nbr / a, base);
 			b = nbr % a;
 			write(1, &base[b], 1);
+			n++;
 		}
 		if (nbr < 0)
 		{
 			write(1, "-", 1);
 			ft_putnbr_base_long(-nbr, base);
+			n++;
 		}
 	}
+	return (n);
 }
 
 static char	*ft_strcpy (char *dest, const char *src)
