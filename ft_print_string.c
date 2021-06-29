@@ -9,8 +9,15 @@ static int	ft_print_string_spaces(t_flag *flag, int n_bytes, int len)
 	width = flag->flag_width;
 	if (flag->flag_is_prec == 1 || flag->flag_dot == 1)
 		{
-			if (width > flag->flag_prec)
-				width -= flag->flag_prec;
+			if (flag->flag_dot == 1)
+				width = flag->flag_width;
+			else if (((width > flag->flag_prec && width < len) || flag->flag_prec < len))
+			{
+				if (width < len || flag->flag_prec < len)
+					width -= flag->flag_prec;
+				else
+					width -= len;
+			}
 			else
 				width -= len;
 		}
@@ -30,6 +37,8 @@ int	ft_print_string(va_list VaList, int n_bytes, t_flag *flag)
 	int		prec;
 
 	print_str = va_arg(VaList, char *);
+	if (!print_str)
+		print_str = "(null)";
 	prec = flag->flag_prec;
 	len = ft_strlen(print_str);
 	if (flag->flag_is_width == 1 && flag->flag_minus == 0)

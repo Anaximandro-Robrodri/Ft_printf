@@ -10,6 +10,8 @@ static int	ft_check_args(const char **str, va_list VaList, int n_bytes, t_flag *
 		return (ft_print_char(VaList, n_bytes, flag));
 	else if (**str == 'i' || **str == 'd')
 		return (ft_print_int(VaList, n_bytes, flag));
+	else if (**str == 'u')
+		return (ft_print_unsigned_int(VaList, n_bytes, flag));
 /*	else if (**str == 'x')
 		return (ft_print_hex(VaList, n_bytes));
 	else if (**str == 'p')
@@ -55,16 +57,33 @@ int	ft_printf(const char *str, ...)
 	va_end(VaList);
 	return(n_bytes);
 }
-
-int main()				// PARA LAS STRINGS
+/*int main()
 {
 	int i;
 	int d;
-	i = ft_printf(" %*.4s ", 10, "123");
+	i = ft_printf("%10.8u", UINT_MAX);
 	printf("\n%i\n", i);
-	d = printf(" %*.4s ", 10, "123");
+	d = printf("%10.8u", UINT_MAX);
 	printf("\n%i", d);
-}
+}*/
+
+/*int main()				// PARA LAS STRINGS
+{
+	int i;
+	int d;*/
+/*	i = ft_printf(" %5.2s ", NULL);
+	printf("\n%i\n", i);
+	d = printf(" %5.2s ", NULL);
+	printf("\n%i", d);
+	i = ft_printf(" %4.2s %4.2s ", "123", "4567");
+	printf("\n%i\n", i);
+	d = printf(" %4.2s %4.2s ", "123", "4567");
+	printf("\n%i", d);*/
+/*	i = ft_printf(" %-3.s ", NULL);
+	printf("\n%i\n", i);
+	d = printf(" %-3.s ", NULL);
+	printf("\n%i", d);
+}*/
 
 /*int main()			// PARA LOS CHARS
 {

@@ -4,6 +4,7 @@ SRC = ft_printf.c \
 		ft_print_string.c \
 		ft_print_char.c \
 		ft_print_int.c \
+		ft_print_unsigned_int.c \
 		ft_print_hex.c \
 		ft_print_address.c \
 		ft_print_percent.c \
