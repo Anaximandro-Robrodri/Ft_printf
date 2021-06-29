@@ -4,8 +4,8 @@
 
 static int	ft_check_args(const char **str, va_list VaList, int n_bytes, t_flag *flag)
 {
-/*	if (**str == 's')
-		return (ft_print_string(VaList, n_bytes));*/
+	if (**str == 's')
+		return (ft_print_string(VaList, n_bytes, flag));
 	if (**str == 'c')
 		return (ft_print_char(VaList, n_bytes, flag));
 	else if (**str == 'i' || **str == 'd')
@@ -54,6 +54,16 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(VaList);
 	return(n_bytes);
+}
+
+int main()				// PARA LAS STRINGS
+{
+	int i;
+	int d;
+	i = ft_printf(" %-12.s ", "Holacaracola");
+	printf("\n%i\n", i);
+	d = printf(" %-12.s ", "Holacaracola");
+	printf("\n%i", d);
 }
 
 /*int main()			// PARA LOS CHARS
