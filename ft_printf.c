@@ -60,9 +60,9 @@ int main()				// PARA LAS STRINGS
 {
 	int i;
 	int d;
-	i = ft_printf(" %-12.s ", "Holacaracola");
+	i = ft_printf(" %*.4s ", 10, "123");
 	printf("\n%i\n", i);
-	d = printf(" %-12.s ", "Holacaracola");
+	d = printf(" %*.4s ", 10, "123");
 	printf("\n%i", d);
 }
 
