@@ -12,12 +12,12 @@ static int	ft_check_args(const char **str, va_list VaList, int n_bytes, t_flag *
 		return (ft_print_int(VaList, n_bytes, flag));
 	else if (**str == 'u')
 		return (ft_print_unsigned_int(VaList, n_bytes, flag));
-/*	else if (**str == 'x')
-		return (ft_print_hex(VaList, n_bytes));*/
+	else if (**str == 'x')
+		return (ft_print_hex(VaList, n_bytes, flag));
 	else if (**str == 'p')
 		return (ft_print_address(VaList, n_bytes, flag));
-/*	else if (**str == 'X')
-		return (ft_print_unsigned_hexa(VaList, n_bytes));*/
+	else if (**str == 'X')
+		return (ft_print_unsigned_hexa(VaList, n_bytes, flag));
 	else if (**str == '%')
 		return (ft_print_percent(n_bytes));
 	return (0);
@@ -25,7 +25,7 @@ static int	ft_check_args(const char **str, va_list VaList, int n_bytes, t_flag *
 
 static const char	*ft_is_flag(const char *str, t_flag *flag, va_list VaList)
 {
-	while (!ft_isalpha(*str))
+	while (!ft_isalpha(*str) && *str != '%')
 		str = ft_check_flags(str, flag, VaList);
 	return (str);
 }
@@ -62,9 +62,9 @@ int	ft_printf(const char *str, ...)
 {
 	int i;
 	int d;
-	i = ft_printf(" %10p %10p", "perro", "perro");
+	i = ft_printf(" %% ");
 	printf("\n%i\n", i);
-	d = printf(" %10p %10p", "perro", "perro");
+	d = printf(" %% ");
 	printf("\n%i", d);
 }*/
 
