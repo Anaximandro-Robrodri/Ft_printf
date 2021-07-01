@@ -6,14 +6,14 @@ static int ft_treat_negative(long print_int, t_flag *flag, int len, int n_bytes)
 	{
 		if (flag->flag_zero == 1 && flag->flag_is_prec == 0  && flag->flag_dot == 0)
 		{
+			flag->flag_put_minus = 1;
 			ft_putchar('-');
 			n_bytes = ft_print_width_is_zero(flag, n_bytes, len);
 		}
 		else
 			n_bytes = ft_print_spaces(flag, n_bytes, len);
 	}
-	if ((flag->flag_zero == 0) || (flag->flag_zero == 1 && flag->flag_is_prec == 1) ||
-		(flag->flag_zero == 1 && flag->flag_dot == 1))
+	if (flag->flag_put_minus == 0)
 		ft_putchar('-');
 	print_int *= -1;
 	if (flag->flag_is_prec == 1)

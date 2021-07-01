@@ -24,9 +24,7 @@ const char	*ft_load_prec_num(const char *str, t_flag *flag)
 	if (flag->flag_prec > 0)
 		flag->flag_is_prec = 1;
 	if (flag->flag_prec == 0)
-	{
 		flag->flag_dot = 1;
-	}
 	while (ft_isdigit(*str))
 		str++;
 	return (str);

@@ -15,6 +15,7 @@ typedef struct	s_flag
 	int		flag_is_prec;
 	int		flag_is_width;
 	int		flag_is_negative;
+	int		flag_put_minus;
 }	t_flag;
 
 int					ft_printf(const char *str, ...);

@@ -10,12 +10,15 @@ void	ft_init_flags(t_flag *flag)
 	flag->flag_is_width = 0;
 	flag->flag_is_prec = 0;
 	flag->flag_is_negative = 0;
+	flag->flag_put_minus = 0;
 }
 static const char *ft_load_prec(const char *str, t_flag *flag, va_list VaList)
 {
 	flag->flag_prec = va_arg(VaList, int);
 	if (flag->flag_prec > 0)
 		flag->flag_is_prec = 1;
+	if (flag->flag_prec == 0)
+		flag->flag_dot = 1;
 	return (str + 1);
 }
 
