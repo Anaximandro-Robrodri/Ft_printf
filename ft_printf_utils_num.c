@@ -30,7 +30,7 @@ const char	*ft_load_prec_num(const char *str, t_flag *flag)
 	return (str);
 }
 
-const char *ft_load_width_num(const char *str, t_flag *flag)
+const char	*ft_load_width_num(const char *str, t_flag *flag)
 {
 	flag->flag_width = ft_atoi(str);
 	if (flag->flag_width > 0)

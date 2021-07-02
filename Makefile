@@ -1,6 +1,8 @@
+LIBFT = ./libft/libft.a
+
 NAME = libftprintf.a
 
-SRC = ft_printf.c \
+SRC =	ft_printf.c \
 		ft_print_string.c \
 		ft_print_char.c \
 		ft_print_int.c \
@@ -18,22 +20,23 @@ OBJS = $(SRC:.c=.o)
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME):
+	$(MAKE) -C ./libft
 	$(CC) $(FLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJS)
 
 clean:
+	$(MAKE) clean -C ./libft
 	rm -f $(OBJS)
 
 fclean: clean
+	$(MAKE) fclean -C ./libft
 	rm -f $(NAME)
 
 re: fclean all
 
 .PHONY: all re m clean fclean bonus
-
-
