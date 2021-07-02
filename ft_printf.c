@@ -83,9 +83,9 @@ int	ft_printf(const char *str, ...)
 
 	int count;
 
-	count = ft_printf(" %0i ", j);
+	count = ft_printf("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
 	ft_printf("\ncount = %i\n", count);
-	count = printf(" %0i ", j);
+	count = printf("%*.*i, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d, %*.*d", a, b, i, a, b, j, a, b, k, a, b, l, a, b, m, a, b, c, a, b, e, a, b, d);
 	ft_printf("\ncount = %i\n", count);
 }*/
 
@@ -121,10 +121,9 @@ int	ft_printf(const char *str, ...)
 {
 	int i;
 	int d;
-	char a = 'a';
-	i = ft_printf(" %-*c ", 20, a);
+	i = ft_printf("%.x", 0);
 	printf("\n%i\n", i);
-	d = printf(" %-*c ", 20, a);
+	d = printf("%.x", 0);
 	printf("\n%i\n", d);
 }*/
 

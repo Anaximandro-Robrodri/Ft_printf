@@ -28,7 +28,7 @@ static void ft_load_width_astherisk(t_flag *flag, va_list VaList)
 	flag->flag_width = va_arg(VaList, int);
 	if (flag->flag_width > 0)
 		flag->flag_is_width = 1;
-	else
+	else if (flag->flag_width < 0)
 	{
 		flag->flag_is_width = 1;
 		flag->flag_zero = 0;
