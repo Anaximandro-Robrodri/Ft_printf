@@ -55,8 +55,3 @@ int	ft_printf(const char *str, ...)
 	va_end (arg);
 	return (n_bytes);
 }
-
-/*int main()
-{
-	ft_printf("Hola");
-}*/

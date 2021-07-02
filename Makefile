@@ -13,7 +13,6 @@ SRC =	ft_printf.c \
 		ft_print_unsigned_hexa.c \
 		ft_printf_utils.c \
 		ft_printf_utils_num.c \
-		ft_printf_big_utils.c \
 		ft_placeholders.c
 
 OBJS = $(SRC:.c=.o)
@@ -26,6 +25,7 @@ all: $(NAME)
 
 $(NAME):
 	$(MAKE) -C ./libft
+	cp libft/libft.a $(NAME)
 	$(CC) $(FLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJS)
 
