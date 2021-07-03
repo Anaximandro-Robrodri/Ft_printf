@@ -9,16 +9,8 @@
 /*   Updated: 2021/06/14 18:16:21 by robrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-static int	ft_strlen(char *base)
-{
-	int	c;
 
-	c = 0;
-	while (base[c] != '\0')
-		c++;
-	return (c);
-}
+#include "libft.h"
 
 static int	gest_errors(char *base)
 {
@@ -50,9 +42,9 @@ static int	gest_errors(char *base)
 
 int	ft_putnbr_base_long(unsigned long long nbr, char *base)
 {
-	int	a;
-	int	b;
-	static int n;
+	int			a;
+	int			b;
+	static int	n;
 
 	n = 0;
 	if (gest_errors(base) == 0)

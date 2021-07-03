@@ -25,10 +25,8 @@ static int	ft_print_string_spaces(t_flag *f, int n_bytes, int len)
 	width = f->flag_width;
 	if (f->flag_is_prec == 1 || f->flag_dot == 1)
 		width = ft_width_analyze(f, width, len);
-	else if (width >= len)
+	else
 		width -= len;
-	else if (width < len)
-		width = 0;
 	while (i++ < width)
 		n_bytes += write(1, " ", 1);
 	return (n_bytes);

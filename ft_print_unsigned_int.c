@@ -27,10 +27,8 @@ static int	ft_print_unsigned_spaces(t_flag *flag, int n_bytes, int len)
 	width = flag->flag_width;
 	if (flag->flag_is_prec == 1)
 		width = ft_unsigned_width_calculator(flag, width, len);
-	else if (flag->flag_is_prec == 0 || width > flag->flag_prec)
+	else if (flag->flag_is_prec == 0)
 		width -= len;
-	else if (width <= flag->flag_prec)
-		width = 0;
 	while (i++ < width)
 		n_bytes += write(1, " ", 1);
 	return (n_bytes);

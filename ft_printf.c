@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include <stdio.h>
 
 static int	ft_args(const char **str, va_list arg, int n_bytes, t_flag *flag)
 {
